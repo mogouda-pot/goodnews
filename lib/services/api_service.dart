@@ -8,6 +8,31 @@ class ApiService {
   static const String apiKey = 'cc38e4e5375e47438762dfd693a0a9a2';
 
   Future<Map<String, dynamic>> getTopHeadlines(
+     {String country = 'us'}) async {
+    try {
+      print('Making API request for top headlines');
+      final response = await http.get(
+        Uri.parse('$baseUrl/top-headlines?country=$country&apiKey=$apiKey'),
+      );
+
+      print('Response status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return data;
+      } else {
+        throw Exception(
+          'Failed to load data: ${response.statusCode}\nBody: ${response.body}',
+        );
+      }
+    } catch (e) {
+      print('API Service Error: $e');
+      rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>> getTopHeadlines4Category(
     String category, {
     String country = 'us',
   }) async {

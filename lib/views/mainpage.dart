@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test1/views/category_view.dart';
 
 import '../widget/cus_apppbar.dart';
 import '../widget/list-cat-container.dart';
@@ -23,14 +24,24 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: CustomAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
             children: [
-              ListCatgoryContainer(onCategorySelected: updateCategory),
-              ListNewsContainer(category: selectedCategory),
+              ListCatgoryContainer(
+                onCategorySelected: (category) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => CategoryView(category: category),
+                    ),
+                  );
+                },
+              ),
+
+              ListNewsContainer(),
             ],
           ),
         ),

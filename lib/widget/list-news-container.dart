@@ -5,8 +5,8 @@ import '../models/article_model.dart';
 import '../services/api_service.dart';
 
 class ListNewsContainer extends StatefulWidget {
-  final String category;
-  const ListNewsContainer({super.key, required this.category});
+ 
+  const ListNewsContainer({super.key, });
 
   @override
   State<ListNewsContainer> createState() => _ListNewsContainerState();
@@ -27,7 +27,7 @@ class _ListNewsContainerState extends State<ListNewsContainer> {
   @override
   void didUpdateWidget(ListNewsContainer oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.category != widget.category) {
+    if (oldWidget != widget) {
       _fetchNews();
     }
   }
@@ -39,8 +39,8 @@ class _ListNewsContainerState extends State<ListNewsContainer> {
         error = null;
       });
       
-      print('Fetching news for category: ${widget.category}');
-      final response = await _apiService.getTopHeadlines(widget.category);
+      print('Fetching news for tOP headlines');
+      final response = await _apiService.getTopHeadlines();
       print('API Response: $response');
       
       if (response['articles'] != null) {

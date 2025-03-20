@@ -13,7 +13,9 @@ class Article {
     return Article(
       title: json['title'] ?? '',
       description: json['description'] ?? '',
-      urlToImage: json['urlToImage'] ?? 'https://thumbs.dreamstime.com/b/breaking-news-background-breaking-news-background-world-global-tv-news-banner-design-100399311.jpg',
+      urlToImage:
+          json['urlToImage'] ??
+          'https://media.gettyimages.com/id/1673064753/vector/breaking-news-world-map-background.jpg?s=612x612&w=gi&k=20&c=xqtMzWHNfVcQHeZosiHAWKJS0QuUtgbZUKJjBlkirBA=',
     );
   }
 }
